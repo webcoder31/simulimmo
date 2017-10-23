@@ -4,7 +4,7 @@ SIMULIMMO est un plugin jQuery permettant d'intégrer un (ou plusieurs) simulate
 
 Un site de démonstration est disponible ici : http://wwww.i-creativ.com/simulimmo/
 
-![SIMULIMMO](/images/github-screenshot.jpg?raw=true "Site de démonstration")
+![SIMULIMMO](/images/github-screenshot.png?raw=true "Site de démonstration")
 
 ## Prérequis
 
