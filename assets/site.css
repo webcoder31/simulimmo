@@ -1,0 +1,490 @@
+/*******************************************************************************
+Regular HTML elements
+*******************************************************************************/
+
+/* <blockquote> element */
+blockquote {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 15px 80px;
+    text-align: center;
+}
+
+blockquote:before, blockquote:after {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 4rem;
+    line-height: 1;
+}
+
+blockquote:before {
+    top: 0;
+    left: 0;
+    content: "\201C";
+}
+
+blockquote:after {
+    bottom: 0;
+    right: 0;
+    content: "\201D";
+}
+
+@media(max-width: 640px) {
+    blockquote {
+        padding: 15px 40px;
+    }
+}
+
+
+/*******************************************************************************
+Backgrounds
+*******************************************************************************/
+
+.uk-section-primary,
+.uk-card-primary,
+.uk-background-primary {
+    background: #630807;
+}
+
+.uk-section-secondary,
+.uk-card-secondary,
+.uk-background-secondary {
+    background-color: #a5845d;
+}
+
+.uk-card-secondary > .uk-card-header {
+    background-color: #630807;
+}
+
+.uk-card-primary > .uk-card-header {
+    background-color: #a5845d;
+}
+
+.uk-section:not(.uk-section-muted):not(.uk-section-primary):not(.uk-section-secondary) {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 5px, #fdfdfd 3px, #fdfdfd 8px);
+}
+
+.uk-section:not(.uk-section-muted):not(.uk-section-primary):not(.uk-section-secondary) > .uk-container {
+    background: linear-gradient(to bottom, transparent 0%, #ffffff 25em);
+}
+
+.uk-section.uk-section-muted {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 5px, #fafafa 3px, #fafafa 8px);
+}
+
+.uk-section.uk-section-muted > .uk-container {
+    background: linear-gradient(to bottom, transparent 0%, #fdfdfd 25em);
+}
+
+@media(max-width: 1000px) {
+    .uk-section:not(.uk-section-muted):not(.uk-section-primary):not(.uk-section-secondary) > .uk-container {
+        background: none;
+    }
+
+    .uk-section.uk-section-muted > .uk-container {
+        background: none;
+    }
+}
+
+@media(min-width: 1000px) {
+
+    .uk-section:not(.uk-section-muted):not(.uk-section-primary):not(.uk-section-secondary) > .uk-container {
+        padding-bottom: 40px;
+        box-shadow: 0 28px 50px rgba(0,0,0,.03);
+    }
+
+    .uk-section.uk-section-muted > .uk-container {
+        padding-bottom: 40px;
+        box-shadow: 0 28px 50px rgba(0,0,0,.035);
+    }
+}
+
+
+/*******************************************************************************
+Modal
+*******************************************************************************/
+
+.uk-modal-header {
+    background-color: #630807;
+}
+
+.uk-modal-footer {
+    /*background-color: #a5845d;*/
+}
+
+.uk-modal-title {
+    color: #ffffff;
+}
+
+
+/*******************************************************************************
+Small device tweaks
+*******************************************************************************/
+
+/* Make some elements to fit 100% viewport width on small devices */
+:not(.uk-card).fit-width {
+    border-radius: 5px;
+}
+
+@media(max-width: 640px) {
+
+    .fit-width {
+        margin-left: -15px;
+        padding-left: 15px;
+        margin-right: -15px;
+        padding-right: 15px;
+    }
+
+    .uk-card.fit-width {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    :not(.uk-card).fit-width {
+        border-radius: 0;
+    }
+}
+
+
+/*******************************************************************************
+Sticky header management
+*******************************************************************************/
+
+/* Stick header on top of viewport */
+#header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Header placeholder that avoid content overlay */
+#sticky-header-placeholder {
+    min-height: calc(20vh + 80px);
+    max-height: calc(33vh + 80px);
+    height: calc(33vh + 80px);
+}
+
+@media(max-width: 640px) {
+
+    #sticky-header-placeholder {
+        min-height: calc(15vh + 40px);
+        max-height: calc(25vh + 40px);
+        height: calc(25vh + 40px);
+    }
+}
+
+/* Add an offset to anchor elements according to sticky header height */
+a[id^="anchor-"] {
+    display: block;
+    width: 0;
+    padding-top: calc(20vh + 80px);
+    margin-top: calc(-20vh - 80px);
+}
+
+@media(max-width: 640px) {
+
+    a[id^="anchor-"] {
+        padding-top: calc(15vh + 40px);
+        margin-top: calc(-15vh - 40px);
+    }
+}
+
+
+/*******************************************************************************
+Navbar
+*******************************************************************************/
+@media(max-width: 640px) {
+
+    .uk-navbar-item,
+    .uk-navbar-nav > li > a {
+        padding: 0 5px;
+        height: 40px;
+    }
+}
+
+@media(max-height: 640px) {
+
+    .uk-navbar-item,
+    .uk-navbar-nav > li > a {
+        padding: 0 5px;
+        height: 40px;
+    }
+}
+
+
+/*******************************************************************************
+Resizable banner
+*******************************************************************************/
+
+.banner {
+    position: relative;
+    min-height: 20vh;
+    max-height: 33vh;
+    height: 33vh;
+    width: 100%;
+    background: #ffffff;
+    background-image: url('./../images/banner.jpg');
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 99%;
+    border-bottom: #d0d0d0 1px solid;
+    cursor: pointer;
+}
+
+@media(max-width: 640px) {
+
+    .banner {
+        min-height: 15vh;
+        max-height: 25vh;
+        height: 25vh;
+    }
+}
+
+.banner-head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    color: white;
+    opacity: 1;
+    text-shadow: 0px 2px 15px #000000;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+}
+
+.banner.tweaked .banner-head {
+    opacity: 0;
+}
+
+.banner-head-frame {
+    padding: 1em 2em;
+    background-color: rgba(255, 255, 255, 0.33);
+}
+
+.banner-head h1 {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1.2;
+    margin: 0;
+}
+
+@media(max-width: 640px) {
+    .banner-head h1 {
+        font-size: 0.83rem;
+    }
+}
+
+.banner-head h1 span {
+    display: block;
+    font-size: 0.75em;
+    font-weight: 400;
+    color: #860301;
+    text-shadow: none;
+}
+
+@media(max-width: 640px) {
+
+    .banner-head h1 span {
+        font-size: 0.63em;
+    }
+}
+
+
+/*******************************************************************************
+Hero panel
+*******************************************************************************/
+
+#hero-panel {
+    min-height: calc(67vh - 80px);
+}
+
+#hero-panel a {
+    text-decoration: none;
+}
+
+#hero-panel .uk-card-primary {
+    background: #9a5353;
+}
+
+#hero-panel .uk-card-primary.uk-card-body .uk-text-lead {
+    color: #222;
+}
+
+#hero-panel .uk-card-primary.uk-card-hover:hover {
+    background-color: #790706 !important;
+    box-shadow: 0 14px 25px rgba(0,0,0,.16);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#hero-panel .uk-card-primary.uk-card-hover:hover * {
+    color: #ffffff;
+}
+
+
+/*******************************************************************************
+Section simulator
+*******************************************************************************/
+
+.uk-section-secondary .uk-input.ls-invalidValue,
+.uk-section-secondary .uk-input.ls-invalidValue:focus {
+    color: #967956;
+    /*border-color: #790706;*/
+}
+
+#section-simulator .uk-card-secondary {
+    background: #ae916e;
+}
+
+/* jQueryUI slider overrides */
+#section-simulator .ui-corner-all {
+    border-radius: 0;
+}
+
+#section-simulator .ui-slider-horizontal {
+    margin-top: -1px;
+    height: .4em;
+}
+
+#section-simulator .ui-slider-horizontal .ui-slider-handle {
+    top: -.4em;
+    margin-left: -.6em;
+    border-radius: .8em;
+}
+
+#section-simulator .ui-state-active,
+#section-simulator .ui-widget-content .ui-state-active,
+#section-simulator .ui-widget-header .ui-state-active,
+#section-simulator a.ui-button:active,
+#section-simulator .ui-button:active,
+#section-simulator .ui-button.ui-state-active:hover {
+    border: none;
+    background: #ffffff;
+}
+
+#section-simulator .ui-state-default,
+#section-simulator .ui-widget-content .ui-state-default,
+#section-simulator .ui-widget-header .ui-state-default,
+#section-simulator .ui-button,
+html #section-simulator .ui-button.ui-state-disabled:hover,
+html #section-simulator .ui-button.ui-state-disabled:active {
+    border: none;
+    background: #790706;
+    color: #454545;
+}
+
+#section-simulator .ui-widget-content {
+    border: none;
+    background: #ffffff;
+    color: #333;
+}
+
+#section-simulator .ui-widget-header {
+    border: none;
+    background: #790706;
+}
+
+/* Small width devices */
+@media(max-width: 640px) {
+
+   #section-simulator .loan-field input[type="text"] {
+        height: 30px;
+    }
+}
+
+/* Small height devices */
+@media(max-height: 640px) {
+
+   #section-simulator .loan-field input[type="text"] {
+        height: 30px;
+    }
+
+    #section-simulator .uk-tab {
+        margin-top: 5px;
+    }
+
+    #section-simulator .uk-tab > * > a {
+        font-size: 0.75rem;
+    }
+}
+
+
+/* UIkit switcher component override allowing to display JSCGraph board in
+switcher panes */
+.switcher-placeholder {
+    height: 279px;
+    text-align: center;
+}
+
+.switcher-placeholder p {
+    /*margin-top: 130px;*/
+}
+
+/*#section-simulator .uk-switcher > :not(.uk-active) {
+    display: block;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+}
+
+#section-simulator .uk-switcher.uk-active {
+    display: block;
+    visibility: visible;
+}*/
+
+
+/*******************************************************************************
+Section about
+*******************************************************************************/
+
+#about-author p {
+    text-align: justify!important;
+}
+
+.uk-grid-stack #about-author p {
+    text-align: left!important;
+}
+
+
+/*******************************************************************************
+Section advice
+*******************************************************************************/
+
+#section-advice {
+    padding-bottom: 0;
+}
+
+@media(max-width: 640px) {
+
+    #section-advice * +.uk-grid-margin,
+    #section-advice .uk-grid +.uk-grid,
+    #section-advice .uk-grid > .uk-grid-margin {
+         margin-top: 0;
+    }
+}
+
+
+/*******************************************************************************
+Footer
+*******************************************************************************/
+
+#footer {
+    background-image: url('./../images/skyline.png');
+    background-position: bottom;;
+    background-repeat: repeat-x;
+}
+
+
+/*******************************************************************************
+Plugins
+*******************************************************************************/
+
+/* jsSocials plugin */
+.jssocials-share-link {
+    border-radius: 50%;
+}

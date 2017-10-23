@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+    <!-- HTML technical meta data -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- HTML document meta data -->
+    <title>SIMULIMMO - Simulateur de prêt immobilier</title>
+    <meta name="description" content="Simulateur de prêt immobilier">
+    <meta name="author" content="Thierry Thiers" />
+    <meta name="copyright" content="Copyright © 2017 Thierry Thiers" />
+
+    <!-- Facebook meta data (Open Graph) -->
+    <meta property="og:title" content="Simulateur de prêt immobilier">
+    <meta property="og:description" content="Simulateur de prêt immobilier">
+    <meta property="og:image" content="http://www.i-creativ.com/simulimmo/images/share.jpg">
+
+
+    <!-- jQuery library -->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- UIkit framework -->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/css/uikit.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit-icons.min.js"></script>
+
+    <!-- JSX Graph library -->
+    <!-- <link rel="stylesheet" type="text/css" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" /> -->
+    <!-- <script type="text/javascript" src="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraphcore.js"></script> -->
+
+    <!-- JS Social plugin -->
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+
+
+    <!-- Style sheet -->
+    <link rel="stylesheet" href="assets/site.css" />
+
+</head>
+
+<body>
+
+<!--
+--------------------------------------------------------------------------------
+HEADER
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-home"></a>
+<div id="header" class="uk-background-primary uk-light uk-box-shadow-large">
+
+    <!-- Navbar -->
+    <div class="uk-container uk-container-small uk-container-center">
+        <nav class="uk-navbar-container uk-navbar-transparent uk-light" uk-navbar>
+
+            <!-- Left items -->
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo uk-visible@m" href="#anchor-section-home" title="Accueil" uk-scroll>SIMULIMMO</a>
+                <ul class="uk-navbar-nav" uk-scrollspy-nav="closest: li; offset:30;">
+                    <li class="uk-hidden@m"><a class="uk-navbar-item uk-icon" href="#anchor-section-home" uk-scroll><span class="uk-margin-small-right uk-icon uk-visible@s" uk-icon="icon: home" title="Accueil"></span><span class="uk-margin-small-right uk-icon uk-hidden@s" uk-icon="icon: settings" title="Simuler"></span></a></li>
+                    <li class="uk-visible@s"><a href="#anchor-section-simulator" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: settings" title="Simuler votre prêt"></span><span class="uk-visible@s">Simuler</span></a></li>
+                    <li><a href="#anchor-section-about" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: comment" title="Information utiles"></span><span class="uk-visible@s">A savoir</span></a></li>
+                    <li><a href="#anchor-section-advice" uk-scroll><span class="uk-margin-small-right uk-icon" uk-icon="icon: happy" title="Conseils et astuces"></span><span class="uk-visible@s">Conseils</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Right items -->
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li class="uk-hidden@s"><a href="#modal-subscribe" uk-toggle><span class="uk-margin-small-right uk-icon" uk-icon="icon: heart" title="S'abonner"></span><span class="uk-visible@m">S'abonner</span></a></li>
+                    <li><a href="#modal-share" uk-toggle><span class="uk-margin-small-right uk-icon" uk-icon="icon: social" title="Partager"></span><span class="uk-visible@m">Partager</span></a></li>
+                    <li><a href="#modal-legacy" uk-toggle><span class="uk-margin-small-right uk-icon" uk-icon="icon: info" title="Mentions légales"></span><span class="uk-visible@m">Mentions légales</span></a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <!-- Resizable banner -->
+    <div id="banner" class="banner uk-background-secondary boundary-align">
+        <div class="banner-head uk-height-1-1 uk-flex uk-flex-center uk-flex-middle">
+            <div class="banner-head-frame">
+                <h1>SIMULIMMO
+                    <span>simulateur de prêt immobilier</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Sticky header placeholder -->
+<div id="sticky-header-placeholder" class="uk-background-primary">
+    <div class="uk-background-primary uk-height-1-1 uk-visible@s"></div>
+    <div class="uk-background-secondary uk-height-1-1 uk-hidden@s"></div>
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION HERO
+--------------------------------------------------------------------------------
+-->
+<div id="hero-panel" class="uk-section uk-section-primary uk-section-small uk-flex uk-flex-middle uk-visible@s">
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <blockquote cite="#"><span class="uk-text-large slogan">Simulez votre prêt immobilier en 3 clics&nbsp;!</span><span class="uk-text-muted uk-visible@s"><br/>Et optez pour la solution la plus adaptée à vos moyens</span></blockquote>
+
+        <div class="uk-child-width-1-3@s" uk-grid uk-height-match="target: > div > .uk-card" uk-scrollspy="target: > div; cls:uk-animation-scale-up; delay: 500; repeat: true">
+
+            <div>
+                <a href="#anchor-section-simulator" uk-scroll>
+                <div id="button-card-controllable" class="uk-card uk-card-primary uk-card-body uk-padding-remove-horizontal uk-border-rounded uk-card-hover" >
+                    <p class="uk-text-lead uk-text-center"><span class="uk-margin-left uk-margin-right uk-margin-small-bottom" uk-icon="icon: settings; ratio: 2.5"></span><br class="uk-visible@s"/>Simuler<span class="uk-visible@s"><br/>votre prêt</span></p>
+                </div>
+                </a>
+            </div>
+
+            <div>
+                <a href="#anchor-section-about" uk-scroll>
+                <div id="button-card-responsive" class="uk-card uk-card-primary uk-card-body uk-padding-remove-horizontal uk-border-rounded uk-card-hover">
+                    <p class="uk-text-lead uk-text-center"><span class="uk-margin-left uk-margin-right uk-margin-small-bottom" uk-icon="icon: comment; ratio: 2.5"></span><br class="uk-visible@s"/>Informations<span class="uk-visible@s"><br/>utiles</span></p>
+                </div>
+                </a>
+            </div>
+
+            <div>
+                <a href="#anchor-section-advice" uk-scroll>
+                <div id="button-card-configurable" class="uk-card uk-card-primary uk-card-body uk-padding-remove-horizontal uk-border-rounded uk-card-hover">
+                    <p class="uk-text-lead uk-text-center"><span class="uk-margin-left uk-margin-right uk-margin-small-bottom" uk-icon="icon: happy; ratio: 2.5"></span><br class="uk-visible@s"/>Conseils<span class="uk-visible@s"><br/>&amp; atuces</span></p>
+                </div>
+                </a>
+            </div>
+
+        </div>
+
+        <p class="uk-margin-large-top uk-text-center" uk-scrollspy="cls: uk-animation-scale-up; delay: 250; repeat: true"><a href="#modal-subscribe" uk-toggle class="uk-button uk-button-danger uk-button-large uk-border-rounded uk-text-bold"><span class="uk-margin-right" uk-icon="icon: heart; ratio: 1.0"></span>Je m'abonne&nbsp;!</a></p>
+
+    </div>
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION SIMULATOR
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-simulator"></a>
+<div id="section-simulator" class="uk-section uk-section-secondary">
+
+    <div class="uk-container uk-container-small">
+
+        <h2>Simuler votre emprunt</h2>
+
+        <!-- Accordion -->
+        <ul uk-accordion>
+
+            <!-- Accordion pane -->
+            <li id="loan-monthly-fees-form" class="uk-open">
+                <h3 class="uk-accordion-title uk-heading-bullet uk-heading-divider">Calculez <span class="uk-visible@s">le montant de </span>vos mensualités</h3>
+                <div class="uk-accordion-content uk-margin-medium-bottom">
+
+                    <!-- Switcher menu -->
+                    <ul class="uk-tab uk-flex-center uk-child-width-expand" uk-switcher="duration: 350; animation: uk-animation-scale-up;">
+                        <li><a href="#">Simuler</a></li>
+                        <li><a href="#">Graphiques</a></li>
+                        <li><a href="#">Détails</a></li>
+                    </ul>
+
+                    <!-- Swicther container -->
+                    <div class="uk-switcher uk-margin">
+
+                        <!-- Swicther pane -->
+                        <div class="uk-child-width-1-2@s" uk-grid>
+
+                            <div class="uk-text-small">
+                                <div class="loan-field uk-margin">
+                                    <label for="borrowedCapital">Montant du prêt</label>
+                                    <input class="ls-borrowedCapitalInput uk-input uk-margin-small-top" type="text" id="borrowedCapital">
+                                    <div class="ls-borrowedCapitalSlider"></div>
+                                </div>
+                                <div class="loan-field uk-margin">
+                                    <label for="loanDuration">Durée d'emprunt</label>
+                                    <input class="ls-loanDurationInput uk-input uk-margin-small-top" type="text" id="loanDuration">
+                                    <div class="ls-loanDurationSlider"></div>
+                                </div>
+                                <div class="uk-child-width-1-2 uk-margin" uk-grid>
+                                    <div class="loan-field">
+                                        <label for="interestRate">Taux d'intérêt</label>
+                                        <input class="ls-interestRateInput uk-input uk-margin-small-top" type="text" id="interestRate">
+                                        <div class="ls-interestRateSlider"></div>
+                                    </div>
+                                    <div class="loan-field">
+                                        <label for="insuranceRate">Taux d'assurance</label>
+                                        <input class="ls-insuranceRateInput uk-input uk-margin-small-top" type="text" id="insuranceRate">
+                                        <div class="ls-insuranceRateSlider"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-text-center uk-text-small">
+                                <label>&nbsp;</label>
+                                <div class="uk-card uk-card-small uk-light uk-card-secondary uk-margin-small-top">
+                                    <div class="uk-card-header">
+                                        <h4 class="uk-card-title">Vos mensualités</h4>
+                                    </div>
+                                    <div class="uk-card-body">
+                                        <p class="uk-text-lead uk-text-bold"><span class="loan-monthly-fees">0.00&nbsp;€</span></p>
+                                    </div>
+                                </div>
+                                <p class="uk-text-bold uk-text-uppercase">Coût total du crédit&nbsp;: <span class="loan-total-amount">0.00&nbsp;€</span></p>
+                                <p class="uk-margin-small uk-text-muted">Montant des intérêts&nbsp;: <span class="loan-interest-amount">0.00&nbsp;€</span></p>
+                                <p class="uk-margin-small uk-text-muted">Montant de l'assurance&nbsp;: <span class="loan-insurance-amount">0.00&nbsp;€</span></p>
+                            </div>
+
+                        </div>
+
+                        <!-- Swicther pane -->
+                        <div class="switcher-placeholder">
+                            <p>TODO</p>
+                        </div>
+
+                        <!-- Swicther pane -->
+                        <div class="switcher-placeholder">
+                            <p>TODO</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </li>
+
+            <!-- Accordion pane -->
+            <li id="loan-borrowed-capital-form">
+                <h3 class="uk-accordion-title uk-heading-bullet uk-heading-divider">Evaluez votre capacité d'emprunt</h3>
+                <div class="uk-accordion-content uk-margin-medium-bottom">
+
+                    <!-- Switcher menu -->
+                    <ul class="uk-tab uk-flex-center uk-child-width-expand" uk-switcher="duration: 350; animation: uk-animation-scale-up;">
+                        <li><a href="#">Simuler</a></li>
+                        <li><a href="#">Graphiques</a></li>
+                        <li><a href="#">Détails</a></li>
+                    </ul>
+
+                    <!-- Swicther container -->
+                    <div class="uk-switcher uk-margin">
+
+                        <!-- Swicther pane -->
+                        <div class="uk-child-width-1-2@s" uk-grid>
+
+                            <div id="loan-form" class="uk-text-small">
+                                <div class="loan-field uk-margin">
+                                    <label for="monthlyFees">Mensualités</label>
+                                    <input class="ls-monthlyFeesInput uk-input uk-margin-small-top" type="text" id="monthlyFees">
+                                    <div class="ls-monthlyFeesSlider"></div>
+                                </div>
+                                <div class="loan-field uk-margin">
+                                    <label for="loanDuration">Durée d'emprunt</label>
+                                    <input class="ls-loanDurationInput uk-input uk-margin-small-top" type="text" id="loanDuration">
+                                    <div class="ls-loanDurationSlider"></div>
+                                </div>
+                                <div class="uk-child-width-1-2 uk-margin" uk-grid>
+                                    <div class="loan-field">
+                                        <label for="interestRate">Taux d'intérêt</label>
+                                        <input class="ls-interestRateInput uk-input uk-margin-small-top" type="text" id="interestRate">
+                                        <div class="ls-interestRateSlider"></div>
+                                    </div>
+                                    <div class="loan-field">
+                                        <label for="insuranceRate">Taux d'assurance</label>
+                                        <input class="ls-insuranceRateInput uk-input uk-margin-small-top" type="text" id="insuranceRate">
+                                        <div class="ls-insuranceRateSlider"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-text-center uk-text-small">
+                                <label>&nbsp;</label>
+                                <div class="uk-card uk-card-small uk-light uk-card-secondary uk-margin-small-top">
+                                    <div class="uk-card-header">
+                                        <h4 class="uk-card-title">Capacité d'emprunt</h4>
+                                    </div>
+                                    <div class="uk-card-body">
+                                        <p class="uk-text-lead uk-text-bold"><span class="loan-borrowed-capital">0.00&nbsp;€</span></p>
+                                    </div>
+                                </div>
+                                <p class="uk-text-bold uk-text-uppercase">Coût total du crédit&nbsp;: <span class="loan-total-amount">0.00&nbsp;€</span></p>
+                                <p class="uk-margin-small uk-text-muted">Montant des intérêts&nbsp;: <span class="loan-interest-amount">0.00&nbsp;€</span></p>
+                                <p class="uk-margin-small uk-text-muted">Montant de l'assurance&nbsp;: <span class="loan-insurance-amount">0.00&nbsp;€</span></p>
+                            </div>
+
+                        </div>
+
+                        <!-- Swicther pane -->
+                        <div class="switcher-placeholder">
+                            <p>TODO</p>
+                        </div>
+
+                        <!-- Swicther pane -->
+                        <div class="switcher-placeholder">
+                            <p>TODO</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </li>
+
+            <!-- Accordion pane -->
+            <li id="loan-loan-duration-form">
+                <h3 class="uk-accordion-title uk-heading-bullet uk-heading-divider">Déterminez la durée de votre prêt</h3>
+                <div class="uk-accordion-content uk-margin-medium-bottom">
+
+                    <!-- Switcher menu -->
+                    <ul class="uk-tab uk-flex-center uk-child-width-expand" uk-switcher="duration: 350; animation: uk-animation-scale-up;">
+                        <li><a href="#">Simuler</a></li>
+                        <li><a href="#">Graphiques</a></li>
+                        <li><a href="#">Détails</a></li>
+                    </ul>
+
+                    <!-- Swicther container -->
+                    <div class="uk-switcher uk-margin">
+
+                        <!-- Swicther pane -->
+                        <div class="uk-child-width-1-2@s" uk-grid>
+
+                            <div id="loan-form" class="uk-text-small">
+                                <div class="loan-field uk-margin">
+                                    <label for="borrowedCapital">Montant du prêt</label>
+                                    <input class="ls-borrowedCapitalInput uk-input uk-margin-small-top" type="text" id="borrowedCapital">
+                                    <div class="ls-borrowedCapitalSlider"></div>
+                                </div>
+                                <div class="loan-field uk-margin">
+                                    <label for="monthlyFees">Mensualités</label>
+                                    <input class="ls-monthlyFeesInput uk-input uk-margin-small-top" type="text" id="monthlyFees">
+                                    <div class="ls-monthlyFeesSlider"></div>
+                                </div>
+                                <div class="uk-child-width-1-2 uk-margin" uk-grid>
+                                    <div class="loan-field">
+                                        <label for="interestRate">Taux d'intérêt</label>
+                                        <input class="ls-interestRateInput uk-input uk-margin-small-top" type="text" id="interestRate">
+                                        <div class="ls-interestRateSlider"></div>
+                                    </div>
+                                    <div class="loan-field">
+                                        <label for="insuranceRate">Taux d'assurance</label>
+                                        <input class="ls-insuranceRateInput uk-input uk-margin-small-top" type="text" id="insuranceRate">
+                                        <div class="ls-insuranceRateSlider"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-text-center uk-text-small">
+                                <label>&nbsp;</label>
+                                <div class="uk-card uk-card-small uk-light uk-card-secondary uk-margin-small-top">
+                                    <div class="uk-card-header">
+                                        <h4 class="uk-card-title">Durée du prêt</h4>
+                                    </div>
+                                    <div class="uk-card-body">
+                                        <p class="uk-text-lead uk-text-bold"><span class="loan-loan-duration">0.00&nbsp;€</span></p>
+                                    </div>
+                                </div>
+                                <p class="uk-text-bold uk-text-uppercase">Coût total du crédit&nbsp;: <span class="loan-total-amount">0.00&nbsp;€</span></p>
+                                <p class="uk-margin-small uk-text-muted">Montant des intérêts&nbsp;: <span class="loan-interest-amount">0.00&nbsp;€</span></p>
+                                <p class="uk-margin-small uk-text-muted">Montant de l'assurance&nbsp;: <span class="loan-insurance-amount">0.00&nbsp;€</span></p>
+                            </div>
+
+                        </div>
+
+                        <!-- Swicther pane -->
+                        <div class="switcher-placeholder">
+                            <p>TODO</p>
+                        </div>
+
+                        <!-- Swicther pane -->
+                        <div class="switcher-placeholder">
+                            <p>TODO</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION ABOUT
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-about"></a>
+<div id="section-about" class="uk-section uk-section-muted">
+
+    <div class="uk-container uk-container-small">
+
+        <div class="uk-grid-divider" uk-grid>
+
+            <div class="uk-width-2-3@m">
+
+                <h2>Ce qu'il faut savoir sur le crédit immobilier</h2>
+
+                <p>Un crédit immoblier est une avance de somme d'argent en vue d'acquérir un logement, principal ou secondaire, ou un bien immobilier éligible à ce type de prêt (garage, entrepot, local, etc). Vous devez vous assurer de votre capacité de remboursement et prendre en compte la durée de votre engagement. Il existe différents types de crédit : La banque cherchera avec vous la formule la plus adaptée à votre situation.</p>
+
+                <p>Un crédit immobilier présente le plus souvent les caractéristiques suivantes&nbsp;:</p>
+
+                <ul>
+                    <li>établi sous forme de <a href="https://fr.wikipedia.org/wiki/Pr%C3%AAt" title="Prêt">prêt</a> d'un montant précis (encore qu'il existe aussi dans des cas particuliers des formules d'ouverture de crédit immobilier pouvant être utilisées par tirages à l'intérieur d'un plafond total).</li>
+                    <li>accordé par un <a href="https://fr.wikipedia.org/wiki/%C3%89tablissement_de_cr%C3%A9dit" title="Établissement de crédit">établissement de crédit</a> (une <a href="https://fr.wikipedia.org/wiki/Banque" title="Banque">banque</a>) ou un organisme financier spécialisé.</li>
+                    <li>distribué (vendu) soit directement par une <a href="https://fr.wikipedia.org/wiki/Banque" title="Banque">banque</a> (un <a href="https://fr.wikipedia.org/wiki/%C3%89tablissement_de_cr%C3%A9dit" title="Établissement de crédit">établissement de crédit</a>), soit par un <a href="https://fr.wikipedia.org/wiki/Courtier" title="Courtier">courtier</a> en crédits (ou <a href="https://fr.wikipedia.org/wiki/Interm%C3%A9diaire_en_op%C3%A9rations_de_banque_et_en_services_de_paiement" title="Intermédiaire en opérations de banque et en services de paiement">Intermédiaire en opérations de banque et en services de paiement</a>).</li>
+                    <li>établi sur une longue <a href="https://fr.wikipedia.org/wiki/Dur%C3%A9e_du_pr%C3%AAt_immobilier" class="mw-redirect" title="Durée du prêt immobilier">durée</a> (plusieurs années ou décennies) sauf en cas de <a href="https://fr.wikipedia.org/wiki/Pr%C3%AAt-relais" class="mw-redirect" title="Prêt-relais">prêt-relais</a> couvrant une période d'attente entre l'achat d'un bien immobilier et la revente d'un autre bien ou une autre rentrée financière attendue).</li>
+                    <li>soit à <a href="https://fr.wikipedia.org/wiki/Taux_fixe" title="Taux fixe">taux fixe</a> sur toute la <a href="https://fr.wikipedia.org/wiki/Dur%C3%A9e_du_pr%C3%AAt_immobilier" class="mw-redirect" title="Durée du prêt immobilier">durée du prêt immobilier</a> (c'est du moins le cas le plus courant en <a href="https://fr.wikipedia.org/wiki/France" title="France">France</a>), soit à <a href="https://fr.wikipedia.org/wiki/Taux_r%C3%A9visable" class="mw-redirect" title="Taux révisable">taux révisable</a>.</li>
+                    <li>lié à un <a href="https://fr.wikipedia.org/wiki/Apport_personnel_(pr%C3%AAt_immobilier)" class="mw-redirect" title="Apport personnel (prêt immobilier)">apport personnel</a>. Cependant, un financement de la totalité de l'acquisition (coût d'acquisition du bien + <a href="https://fr.wikipedia.org/wiki/Frais_de_notaire" title="Frais de notaire">frais de notaire</a> + coût de la garantie) est toujours possible.</li>
+                    <li>remboursable par mensualités constantes.</li>
+                    <li>avec une <a href="https://fr.wikipedia.org/wiki/Garantie_de_pr%C3%AAt_immobilier" title="Garantie de prêt immobilier">garantie de prêt</a> sur le bien financé.</li>
+                    <li>accompagné d'une <a href="https://fr.wikipedia.org/wiki/Assurance_d%C3%A9c%C3%A8s_invalidit%C3%A9" title="Assurance décès invalidité">assurance décès invalidité</a> sur l'emprunteur, de <a href="https://fr.wikipedia.org/wiki/Frais_de_dossier_de_pr%C3%AAt_immobilier" title="Frais de dossier de prêt immobilier">frais de dossier</a>.</li>
+                    <li>limité à une partie de la valeur du bien&nbsp;; en général un <a href="https://fr.wikipedia.org/wiki/Apport_personnel" title="Apport personnel">apport personnel</a> situé entre 10 et 30&nbsp;% est exigé, outre la couverture des frais d'acquisition (coût des actes notariés, fiscalité).</li>
+                </ul>
+
+            </div>
+
+            <div id="about-author" class="uk-width-1-3@m" uk-scrollspy="target: img; cls:uk-animation-scale-up; delay: 250; repeat: true">
+
+                <h3><img class="uk-border-circle uk-align-center uk-margin-remove-top uk-responsive-width uk-visible@m" src="images/assurance.jpg" /><div class="uk-display-inline-block uk-align-right uk-margin-remove-top uk-margin-remove-bottom uk-width-1-3 uk-hidden@m"><img class="uk-border-circle" src="images/glossaire.jpg" /></div>Assurer son prêt</h3>
+
+                <div id="insurance" class="uk-text-small uk-text-justify">
+                    <p>On retrouve des garanties différentes qui peuvent être librement choisi par l’emprunteur&nbsp;:</p>
+                    <ul>
+                        <li><a href="https://reassurez-moi.fr/guide/garantie-deces-assurance-pret-immobilier">Garantie Décès</a>&nbsp;: elle intervient si l’emprunteur vient à décéder et prends en charge alors le capital restant dû.</li>
+                        <li><a href="https://reassurez-moi.fr/guide/garantie-ptia-assurance-pret-immobilier">Garantie PTIA</a>&nbsp;: En cas d’incident ou de maladie, si l’emprunteur ne peut effectuer les actes courants de la vie, alors l’assurance prends en charge les remboursements du crédit immobilier.</li>
+                        <li><a href="https://reassurez-moi.fr/guide/garantie-ipt-assurance-pret-immobilier">Garantie IPT</a>&nbsp;: En cas d’incident, un médecin spécialiste vient expertiser l’emprunteur et prends en compte l’invalidité fonctionnelle et l’invalidité professionnelle.</li>
+                        <li><a href="https://reassurez-moi.fr/guide/pret-immobilier-garantie-itt">Garantie ITT</a>&nbsp;: en cas d’arrêt maladie prolongé, vous pouvez bénéficier d’une prise en charge de vos mensualités par l’assureur.</li>
+                        <li><a href="https://reassurez-moi.fr/guide/assurance-chomage-pret-immobilier">Garantie Perte d’emploi</a>&nbsp;: comme son nom l’indique, cette assurance vous couvre en cas de licenciement.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SECTION IMAGES
+--------------------------------------------------------------------------------
+-->
+<a id="anchor-section-advice"></a>
+<div id="section-advice" class="uk-section">
+
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <h2>Quelques conseils avant de souscrire un prêt immobilier</h2>
+
+        <p>Certes, il est parfaitement possible d'acheter "comptant" un appartement ou une maison. Et certains le font, notamment après avoir vendu un autre bien immobilier. Mais pour la plupart des acheteurs immobiliers, le recours à l'emprunt est un point de passage obligé. Et un point de passage "conseillé" pour les investisseurs, dans la mesure où la prise en compte des intérêts permet de diminuer le montant des revenus fonciers imposables.</p>
+
+        <p>C'est même un des avantages de la pierre par rapport aux valeurs mobilières&nbsp;: l'immobilier permet de se constituer progressivement un patrimoine à crédit. Alors qu'il est impossible d'emprunter pour investir en bourse ou en assurance-vie...</p>
+
+        <p class="uk-text-bold">Voici les 3 points essentiels à examiner avant d'emprunter&nbsp;:</p>
+
+        <div class="uk-margin-large-bottom" uk-grid uk-height-match="target: > div > .uk-card" uk-scrollspy="target: > div; cls:uk-animation-scale-up; delay: 500; repeat: true;" uk-lightbox="animation: scale">
+
+            <div>
+
+                <div class="uk-card uk-card-default uk-grid-collapse uk-margin fit-width" uk-grid>
+                    <div class="uk-card-media-left uk-cover-container uk-width-1-3@s">
+                        <img src="images/conseil-no1.jpg" alt="" uk-cover>
+                        <canvas width="640" height="425"></canvas>
+                    </div>
+                    <div class="uk-width-2-3@s">
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">Le bon moment pour acheter</h3>
+                            <p>Le principal argument en faveur d'un achat immobilier est le niveau historiquement bas des taux d'emprunt à l'heure actuelle. Au second trimestre 2017, les taux moyens des crédits immobiliers oscillaient pour la plupart entre 1,50% et 2,00% pour un prêt sur 20 ans. Et il est probable qu'on ait atteint là un niveau plancher.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <div class="uk-card uk-card-default uk-grid-collapse uk-margin fit-width" uk-grid>
+                    <div class="uk-card-media-left uk-cover-container uk-width-1-3@s">
+                        <img src="images/conseil-no2.jpg" alt="" uk-cover>
+                        <canvas width="640" height="425"></canvas>
+                    </div>
+                    <div class="uk-width-2-3@s">
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">Négocier son prêt au mieux</h3>
+                            <p>Si les taux sont peu élevés, même en tenant compte du coût de l'assurance emprunteur, il convient de bien négocier son prêt immobilier. Par exemple en faisant varier la durée et le montant des remboursements, en faisant valoir au banquier son profil de futur client, ou encore en faisant jouer la concurrence, etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="uk-card uk-card-default uk-grid-collapse uk-margin fit-width" uk-grid>
+                    <div class="uk-card-media-left uk-cover-container uk-width-1-3@s">
+                        <img src="images/conseil-no3.jpg" alt="" uk-cover>
+                        <canvas width="640" height="425"></canvas>
+                    </div>
+                    <div class="uk-width-2-3@s">
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title">Les prêts complémentaires</h3>
+                            <p>La négociation d'un crédit immobilier aujourd'hui va de pair avec la recherche des prêts complémentaires, comme les prêts à taux zéro ou les prêts d'épargne-logement. Les montants de ces prêts aidés ne sont pas très importants, mais peuvent néanmoins contribuer à significativement alléger la charge de remboursement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+FOOTER
+--------------------------------------------------------------------------------
+-->
+<div id="footer" class="uk-section uk-section-primary uk-padding-small">
+
+    <div class="uk-container uk-container-small uk-container-center">
+
+        <div class=" uk-margin-small-top uk-text-center" id="social-sharing" style="font-size: 12px;"></div>
+
+        <p class="uk-margin-remove-bottom uk-text-center uk-text-small">SIMULIMMO © Copyright 2017</p>
+
+        <p class="uk-margin-remove-top uk-margin-small-bottom uk-text-center uk-text-small">Propulsé par <a href="https://getuikit.com/">UIkit</a>, <a href="https://jquery.com">jQuery</a>, <a href="http://jsxgraph.uni-bayreuth.de">JSXGraph</a>, <a href="http://js-socials.com">jsSocials</a> et <a href="http://fontawesome.io">Font Awesome</a></p>
+
+    </div>
+
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+MODAL: Legacy
+--------------------------------------------------------------------------------
+-->
+<div id="modal-legacy" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Mentions légales</h2>
+        </div>
+        <div class="uk-modal-body uk-text-small uk-text-justify">
+
+            <h3 class="uk-h4">Identification</h3>
+            <ul>
+                <li>Raison sociale&nbsp;: I-CREATIV'</li>
+                <li>Immatriculation&nbsp;: 481 588 911 00026 RCS TOULOUSE</li>
+                <li>Siège social&nbsp;: 23 avenue de l'Hers - 31450 BAZIEGE - FRANCE</li>
+                <li>Email&nbsp;: <a href="mailto:contact@i-creativ.com">contact@i-creativ.com</a></li>
+                <li>Téléphone&nbsp;: 06 81 74 45 53</li>
+                <li>Responsable de la publication&nbsp;: Thierry Thiers</li>
+            </ul>
+
+            <h3 class="uk-h4">Réalisation du site</h3>
+            <ul>
+                <li>Conception et design graphique : Thierry Thiers</li>
+                <li>Conception technique et développement : Thierry Thiers</li>
+                <li>Réalisation du service de simulation de prêt : Thierry Thiers</li>
+            </ul>
+
+            <h3 class="uk-h4">Déclaration CNIL</h3>
+            <p>Conformément à la loi "Informatique et Libertés" du 6 janvier 1978, modifiée par la loi du 6 août 2004, les traitements mis en œuvre sur ce site ont fait l'objet d'une déclaration à la Commission Nationale de l'Informatique et des Libertés (CNIL), qui en a délivré récépissé sous le numéro XXXXXXXX.</p>
+
+            <h3 class="uk-h4">Données personnelles</h3>
+            <p>Vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données personnelles que nous pourrions être amenés à recueillir (Art. 32 de la loi "Informatique et Libertés").</p>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Fermer</button>
+        </div>
+    </div>
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+MODAL: Subscribe
+--------------------------------------------------------------------------------
+-->
+<div id="modal-subscribe" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">S'abonner à SIMULIMMO&nbsp;</h2>
+        </div>
+        <div class="uk-modal-body">
+            <label for="email">Votre email</label>
+            <input class="ls-borrowedCapitalInput uk-input uk-margin-small-top" type="text" id="email">
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">OK</button>
+        </div>
+    </div>
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+MODAL: Share
+--------------------------------------------------------------------------------
+-->
+<div id="modal-share" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title">Partagez SIMULIMMO&nbsp;</h2>
+        </div>
+        <div class="uk-modal-body">
+            <div class="uk-text-center" id="social-sharing-popup" style="font-size: 12px;"></div>
+        </div>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Fermer</button>
+        </div>
+    </div>
+</div>
+
+
+<!--
+--------------------------------------------------------------------------------
+SCRIPTS
+--------------------------------------------------------------------------------
+-->
+<script type="text/javascript">
+
+    // Initialize social sharing plugin.
+    $(document).ready(function() {
+        $("#social-sharing, #social-sharing-popup").jsSocials({
+            shareIn: "popup",
+            showLabel: false,
+            showCount: false,
+            shares: ["twitter", "facebook", "whatsapp", "email"]
+        });
+    });
+
+    if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent))
+    {
+        // If IE browser, use Babel transpiler because it is not ES6 compliant.
+        document.write('<script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"><\/script>');
+        document.write('<script type="text/babel" src="assets/loansimulator.js"><\/script>');
+        // document.write('<script src="http://www.i-creativ.com/simulimmo/assets/loansimulator.js" type="text/babel"><\/script>');
+        document.write('<script type="text/babel" src="assets/site.js" type="text/babel"><\/script>');
+        // document.write('<script src="http://www.i-creativ.com/simulimmo/assets/site.js" type="text/babel"><\/script>');
+    }
+    else
+    {
+        document.write('<script type="text/javascript" src="assets/loansimulator.js"><\/script>');
+        document.write('<script type="text/javascript" src="assets/site.js"><\/script>');
+    }
+
+</script>
+
+
+</body>
+</html>
