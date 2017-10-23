@@ -4,9 +4,9 @@ SIMULIMMO est un plugin jQuery permettant d'intégrer un (ou plusieurs) simulate
 
 Un site de démonstration est disponible ici : http://wwww.i-creativ.com/simulimmo/
 
-![SIMULIMMO](/images/share.jpg?raw=true "Site de démonstration")
+![SIMULIMMO](/images/github-screenshot.jpg?raw=true "Site de démonstration")
 
-## Prerequis
+## Prérequis
 
 Le plugin SIMULIMMO requiert jQuery et jQuery UI pour fonctionner.
 Au niveau jQuery UI, il n'utilise que le composant **slider**.
@@ -125,12 +125,11 @@ Coté DOM / HTML, vous aurez à mettre en place un template ressemblant à peu p
     </div>
 ```
 
-### Instanciation JS
+### Instanciation du plugin
 
 L'instanciation du plugin consiste essentiellement en la définition des deux fonctions callback à associer aux hooks `onUpdate()` et `onError()` qui se chargent de manipuler le DOM pour effectuer les affichages :
 
 ```javascript
-    // Initialize loan simulator plugin for monthly fees calculation.
     $('#loan-form').loansimulator({
 
         // Traitement des affichages à effectuer
@@ -216,7 +215,7 @@ Je vous invite d'ailleurs à proposer des solutions plus fiables si vous en avez
 
 ## Comment contribuer ?
 
-Les disfonctionnements et demandes d'amélioration peuvent être remontés sur l'URL suivante :
+Les dysfonctionnements et demandes d'amélioration peuvent être remontés sur l'URL suivante :
 * [Open Issues](https://github.com/webcoder31/endless/issues)
 
 Et les propositions de correction ou d'amélioration sur celle-ci :
