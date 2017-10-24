@@ -1,10 +1,16 @@
+<head>
+<script type="text/javascript" src="README/toc.js">
+</head>
+
 # Simulateur de prêt immobilier (plugin jQuery)
 
 SIMULIMMO est un plugin jQuery permettant d'intégrer un (ou plusieurs) simulateur(s) de prêt immobilier de manière très simple au sein de sites internet.
 
-Un site de démonstration est disponible ici : http://wwww.i-creativ.com/simulimmo/
+Un site de démonstration est disponible ici : http://www.i-creativ.com/simulimmo/
 
 ![SIMULIMMO](/README/github-screenshot.png?raw=true "Site de démonstration")
+
+
 
 ## Prérequis
 
@@ -19,7 +25,7 @@ SIMULIMMO est à même d'effectuer 3 simulations différentes :
 - Evaluation de la capacité d'emprunt
 - Détermination de le durée d'un prêt
 
-Dans les 3 cas de figure, l'assurance associée au prêt est prise en compte dans les calculs.
+Dans les 3 cas de figure, l'assurance associée au prêt est prise en compte dans les calculs. Celle-ci est supposée couvrir la totalité du crédit.
 
 D'un point de vue webdesign, SIMULIMMO est totalement agnostique et ne possède pas de feuille de style associée. Il s'adapte automatiquement au "look en feel" existant pour peu qu'on lui fournisse les éléments DOM nécessaires à son fonctionnement. Dans le pire des cas, vous pourriez avoir besoin de modifier la feuille de style associée au composant **slider** de jQuery UI afin qu'il s'intègre à votre site de manière tout à fait transparente.
 
