@@ -8,7 +8,8 @@ Un site de démonstration est disponible ici : http://www.i-creativ.com/simulimm
 
 ## Prérequis
 
-Le plugin SIMULIMMO requiert jQuery et jQuery UI pour fonctionner.
+Le plugin SIMULIMMO requiert **jQuery**, **jQuery UI** et **jQuery UI Touch Punch** pour fonctionner.
+
 Au niveau jQuery UI, il n'utilise que le composant **slider**.
 
 ## Foctionnalités
@@ -22,6 +23,21 @@ SIMULIMMO est à même d'effectuer 3 simulations différentes :
 Dans les 3 cas de figure, l'assurance associée au prêt est prise en compte dans les calculs. Celle-ci est supposée couvrir la totalité du crédit.
 
 D'un point de vue webdesign, SIMULIMMO est totalement agnostique et ne possède pas de feuille de style associée. Il s'adapte automatiquement au "look en feel" existant pour peu qu'on lui fournisse les éléments DOM nécessaires à son fonctionnement. Dans le pire des cas, vous pourriez avoir besoin de modifier la feuille de style associée au composant **slider** de jQuery UI afin qu'il s'intègre à votre site de manière tout à fait transparente.
+
+## Installation
+
+Ajouter simplement le code suivant dans la section `head` de votre fichier HTML :
+
+```HTML
+    <!-- jQuery & co -->
+    <link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- Simulateur de prêt SIMULIMMO -->
+    <script type="text/javascript" src="path/to/loansimulator.js"></script>
+```
 
 ## Utilisation
 
@@ -76,10 +92,10 @@ La configuration par défaut du plugin est la suivante. Les noms des paramètres
         monthlyFeesMax: 5000,
         monthlyFeesStep: 100,
 
-        // CSS class to apply to input field on invalid entered values
+        // CSS class to apply to input fields holding invalid values.
         invalidValueCss: 'ls-invalidValue',
 
-        // Number of decimal in data passed to hook onUpdate().
+        // Number of decimals in data passed to hook onUpdate().
         precision: 2,
 
         // Hooks
