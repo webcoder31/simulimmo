@@ -308,31 +308,40 @@ Hero panel
 }
 
 #hero-panel .uk-card-primary {
-    background: #9a5353;
+    background: #ae916e;
 }
 
 #hero-panel .uk-card-primary.uk-card-body .uk-text-lead {
-    color: #222;
+    color: #ffffff;
 }
 
 #hero-panel .uk-card-primary.uk-card-hover:hover {
-    background-color: #790706 !important;
+    background-color: #ffffff !important;
     box-shadow: 0 14px 25px rgba(0,0,0,.16);
-    color: #ffffff;
+    color: #630807;
     cursor: pointer;
 }
 
 #hero-panel .uk-card-primary.uk-card-hover:hover * {
-    color: #ffffff;
+    color: #630807;
 }
 
 
 /*******************************************************************************
 Section simulator
 *******************************************************************************/
+#section-simulator {
+    min-height: calc(80vh - 80px);
+}
 
-.uk-section-secondary .uk-input.ls-invalidValue,
-.uk-section-secondary .uk-input.ls-invalidValue:focus {
+@media(max-width: 640px) {
+    #section-simulator {
+        min-height: calc(75vh - 40px);
+    }
+}
+
+#section-simulator .uk-input.ls-invalidValue,
+#section-simulator .uk-input.ls-invalidValue:focus {
     color: #967956;
     /*border-color: #790706;*/
 }

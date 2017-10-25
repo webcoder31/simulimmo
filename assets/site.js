@@ -159,7 +159,7 @@ $(document).ready(function() {
 
 
     function beautifyNumber(x) {
-        x = Math.round(x).toFixed(0);
+        x = Math.round(x);
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
 
@@ -172,7 +172,10 @@ $(document).ready(function() {
                     $('#loan-monthly-fees-form .loan-insurance-amount').text(beautifyNumber(data.insuranceAmount) + ' €');
                 },
             'onError': function(error) {
-                    $('#monthly-fees-form .loan-monthly-fees').text('Valeur invalide !');
+                    $('#loan-monthly-fees-form .loan-monthly-fees').text('### €');
+                    $('#loan-monthly-fees-form .loan-total-amount').text('### €');
+                    $('#loan-monthly-fees-form .loan-interest-amount').text('### €');
+                    $('#loan-monthly-fees-form .loan-insurance-amount').text('### €');
                 }
         });
 
@@ -185,7 +188,10 @@ $(document).ready(function() {
                     $('#loan-borrowed-capital-form .loan-insurance-amount').text(beautifyNumber(data.insuranceAmount) + ' €');
                 },
             'onError': function(error) {
-                    $('#loan-borrowed-capital-form .loan-borrowed-capital').text('Valeur invalide !');
+                    $('#loan-borrowed-capital-form .loan-borrowed-capital').text('### €');
+                    $('#loan-borrowed-capital-form .loan-total-amount').text('### €');
+                    $('#loan-borrowed-capital-form .loan-interest-amount').text('### €');
+                    $('#loan-borrowed-capital-form .loan-insurance-amount').text('### €');
                 }
         });
 
@@ -198,7 +204,10 @@ $(document).ready(function() {
                     $('#loan-loan-duration-form .loan-insurance-amount').text(beautifyNumber(data.insuranceAmount) + ' €');
                 },
             'onError': function(error) {
-                    $('#loan-loan-duration-form .loan-loan-duration').text('Valeur invalide !');
+                    $('#loan-loan-duration-form .loan-loan-duration').text('### €');
+                    $('#loan-loan-duration-form .loan-total-amount').text('### €');
+                    $('#loan-loan-duration-form .loan-interest-amount').text('### €');
+                    $('#loan-loan-duration-form .loan-insurance-amount').text('### €');
                 }
         });
 
