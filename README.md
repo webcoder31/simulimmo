@@ -23,7 +23,7 @@ Un site de démonstration est disponible ici : http://www.i-creativ.com/simulimm
     - [Données fournies par le plugin](#user-content-donn%C3%A9es-fournies-par-le-plugin)
     - [Choix du calcul à effectuer](#user-content-choix-du-calcul-%C3%A0-effectuer)
     - [Traitement des erreurs](#user-content-traitement-des-erreurs)
-- [Qualité des algorithmes de calcul et fiabilité des résultats](#user-content-qualit%C3%A9-des-algorithmes-de-calcul-et-fiabilit%C3%A9-des-r%C3%A9sultats)
+- [Fiabilité des résultats](#user-content-fiabilit%C3%A9-des-r%C3%A9sultats)
 - [Comment contribuer ?](#user-content-comment-contribuer-)
 - [Licence](#user-content-licence)
 
@@ -264,7 +264,7 @@ Le plugin n'affiche aucun message d'erreur à l'utilisateur. Il corrige lui-mêm
 De plus, le plugin n'effectue aucun calcul tant qu'un champs en cours de saisie contient une valeur invalie ; le hook `onUpdate()` n'est donc pas déclenché.
 
 
-## Qualité des algorithmes de calcul et fiabilité des résultats
+## Fiabilité des résultats
 
 Seul le calcul des mensualités de remboursement est réellement fiable et il suppose que l'assurance souscrite couvre 100% de votre crédit.
 
