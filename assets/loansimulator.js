@@ -98,12 +98,21 @@
     // Create a plugin instance for the given DOM element.
     function Plugin(element, options)
     {
+        // Avoid potential scope conflicts.
+        var instance = this;
+
+        // What to calculate.
+        instance.fieldToCalculate = null;
+
+        // Get loan form.
+        instance.loanForm = element;
+
         // Merge user options with plugin default settings
-        this.settings = $.extend({}, defaults, options);
-        var settings = this.settings;
+        instance.settings = $.extend({}, defaults, options);
 
         // Convert all non function settings to functions.
-        $.each(this.settings, function(option, value)
+        var settings = instance.settings;
+        $.each(instance.settings, function(option, value)
         {
             if(! $.isFunction(value)) {
                 settings[option] = function() {
@@ -112,76 +121,107 @@
             }
         });
 
-        // What to calculate.
-        this.fieldToCalculate = null;
-
-        // Get loan form.
-        this.loanForm = element;
-
         // Create field objects from what it's under the loan form in the DOM.
-        this.fields = {
+        instance.fields = {
+
             'borrowedCapital': {
-                input: $(this.loanForm).find(this.settings.borrowedCapitalInputSelector())[0],
-                slider: $(this.loanForm).find(this.settings.borrowedCapitalSliderSelector())[0],
-                default: this.settings.borrowedCapitalDefault(),
-                min: this.settings.borrowedCapitalMin(),
-                max: this.settings.borrowedCapitalMax(),
-                step: this.settings.borrowedCapitalStep(),
+                input: $(instance.loanForm).find(instance.settings.borrowedCapitalInputSelector())[0],
+                slider: $(instance.loanForm).find(instance.settings.borrowedCapitalSliderSelector())[0],
+                default: instance.settings.borrowedCapitalDefault(),
+                min: instance.settings.borrowedCapitalMin(),
+                max: instance.settings.borrowedCapitalMax(),
+                step: instance.settings.borrowedCapitalStep(),
                 getValue: function() {},
                 isProvided: false
             },
 
             'loanDuration': {
-                input: $(this.loanForm).find(this.settings.loanDurationInputSelector())[0],
-                slider: $(this.loanForm).find(this.settings.loanDurationSliderSelector())[0],
-                default: this.settings.loanDurationDefault(),
-                min: this.settings.loanDurationMin(),
-                max: this.settings.loanDurationMax(),
-                step: this.settings.loanDurationStep(),
+                input: $(instance.loanForm).find(instance.settings.loanDurationInputSelector())[0],
+                slider: $(instance.loanForm).find(instance.settings.loanDurationSliderSelector())[0],
+                default: instance.settings.loanDurationDefault(),
+                min: instance.settings.loanDurationMin(),
+                max: instance.settings.loanDurationMax(),
+                step: instance.settings.loanDurationStep(),
                 getValue: function() {},
                 isProvided: false
             },
 
             'interestRate': {
-                input: $(this.loanForm).find(this.settings.interestRateInputSelector())[0],
-                slider: $(this.loanForm).find(this.settings.interestRateSliderSelector())[0],
-                default: this.settings.interestRateDefault(),
-                min: this.settings.interestRateMin(),
-                max: this.settings.interestRateMax(),
-                step: this.settings.interestRateStep(),
+                input: $(instance.loanForm).find(instance.settings.interestRateInputSelector())[0],
+                slider: $(instance.loanForm).find(instance.settings.interestRateSliderSelector())[0],
+                default: instance.settings.interestRateDefault(),
+                min: instance.settings.interestRateMin(),
+                max: instance.settings.interestRateMax(),
+                step: instance.settings.interestRateStep(),
                 getValue: function() {},
                 isProvided: false
             },
 
             'insuranceRate': {
-                input: $(this.loanForm).find(this.settings.insuranceRateInputSelector())[0],
-                slider: $(this.loanForm).find(this.settings.insuranceRateSliderSelector())[0],
-                default: this.settings.insuranceRateDefault(),
-                min: this.settings.insuranceRateMin(),
-                max: this.settings.insuranceRateMax(),
-                step: this.settings.insuranceRateStep(),
+                input: $(instance.loanForm).find(instance.settings.insuranceRateInputSelector())[0],
+                slider: $(instance.loanForm).find(instance.settings.insuranceRateSliderSelector())[0],
+                default: instance.settings.insuranceRateDefault(),
+                min: instance.settings.insuranceRateMin(),
+                max: instance.settings.insuranceRateMax(),
+                step: instance.settings.insuranceRateStep(),
                 getValue: function() {},
                 isProvided: false
             },
 
             'monthlyFees': {
-                input: $(this.loanForm).find(this.settings.monthlyFeesInputSelector())[0],
-                slider: $(this.loanForm).find(this.settings.monthlyFeesSliderSelector())[0],
-                default: this.settings.monthlyFeesDefault(),
-                min: this.settings.monthlyFeesMin(),
-                max: this.settings.monthlyFeesMax(),
-                step: this.settings.monthlyFeesStep(),
+                input: $(instance.loanForm).find(instance.settings.monthlyFeesInputSelector())[0],
+                slider: $(instance.loanForm).find(instance.settings.monthlyFeesSliderSelector())[0],
+                default: instance.settings.monthlyFeesDefault(),
+                min: instance.settings.monthlyFeesMin(),
+                max: instance.settings.monthlyFeesMax(),
+                step: instance.settings.monthlyFeesStep(),
                 getValue: function() {},
                 isProvided: false
             }
         };
 
+        // Check fields consistency and determine which field to calculate.
+        $.each(instance.fields, function(fieldName, params)
+        {
+            // Are field DOM elements provided ?
+            params.isProvided = params.input != undefined && params.slider != undefined;
 
-        // Resolves scope conflicts.
-        var that = this;
+            if (params.isProvided)
+            {
 
-        // Loop on field objects.
-        $.each(this.fields, function(fieldName, params)
+            }
+            else if (instance.fieldToCalculate)
+            {
+                console.log('[LOANSIMULATOR] INITIALIZATION ERROR: Field to calculate already found! Maybe some fields are missing in DOM.');
+                return null;
+            }
+            else
+            {
+                // Field to calculate found.
+                instance.fieldToCalculate = fieldName;
+            }
+        });
+
+        if (instance.fieldToCalculate == undefined)
+        {
+            console.log('[LOANSIMULATOR] INITIALIZATION ERROR: Cannot find which field to calculate! Maybe too much fields are provided in DOM.');
+            return null;
+        }
+
+        switch(instance.fieldToCalculate)
+        {
+            case 'monthlyFees':
+            case 'borrowedCapital':
+            case 'loanDuration':
+                break;
+
+            default:
+               console.log('[LOANSIMULATOR] INITIALIZATION ERROR: Only "Monthly fees", "Borrowed capital" or "Loan duration" field should ommitted in DOM.');
+               return null;
+        }
+
+        // Initialize fields.
+        $.each(instance.fields, function(fieldName, params)
         {
             // Are field DOM elements provided ?
             params.isProvided = params.input && params.slider;
@@ -190,6 +230,7 @@
             {
                 // Implements method to get field value.
                 params.getValue = function() {
+
                     return params.input.value;
                 };
 
@@ -202,8 +243,7 @@
                     step: params.step,
                     slide: function(event, ui) {
                         $(params.input).val(ui.value);
-                        $(params.input).removeClass(settings.invalidValueCss);
-                        that.calculate();
+                        instance.calculate();
                     }
                 });
 
@@ -211,85 +251,55 @@
                 $(params.input).val(params.default);
 
                 // On keyup, check input value.
-                $(params.input).on('keyup', function () {
+                $(params.input).on('keyup', function ()
+                {
                     if (isNaN(this.value))
                     {
                         // Non numeric value.
                         $(this).addClass(settings.invalidValueCss);
-                        that.inputError();
+                        instance.inputError({'error': 'NaN', 'value': this.value, 'target': this});
                     }
                     else if (this.value < params.min)
                     {
                         // Value is too low.
                         $(this).addClass(settings.invalidValueCss);
                         $(params.slider).slider('value', params.min);
-                        that.inputError();
+                        instance.inputError({'error': 'Too low', 'value': this.value, 'target': this});
                     }
                     else if (this.value > params.max)
                     {
                         // Value is too high.
                         $(this).addClass(settings.invalidValueCss);
                         $(params.slider).slider('value', params.max);
-                        that.inputError();
+                        instance.inputError({'error': 'Too high', 'value': this.value, 'target': this});
                     }
                     else
                     {
-                        // Valid value.
+                        // Value is valid.
                         $(this).val(Math.max(Math.min(this.value, $(params.slider).slider('option', 'max')), $(params.slider).slider('option', 'min')));
                         $(params.slider).slider('value', this.value);
                         $(this).removeClass(settings.invalidValueCss);
-                        that.calculate();
+                        instance.calculate();
                     }
                 });
 
-                // On blur, reset input to default value if current one is not valid.
-                $(params.input).on('blur', function () {
+                // On blur, check input value.
+                $(params.input).on('blur', function ()
+                {
                     if (isNaN(this.value) || this.value < params.min || this.value > params.max)
                     {
-                        // Invalid value.
+                        // Value is not valid: Reset input to default value.
                         $(this).removeClass(settings.invalidValueCss);
                         $(params.slider).slider('value', params.default);
                         $(params.input).val(params.default);
-                        that.calculate();
+                        instance.calculate();
                     }
                 });
             }
-            else if (that.fieldToCalculate)
-            {
-                console.log('[LOANSIMULATOR] INITIALIZATION ERROR: Some fields are missing.');
-                return null;
-            }
-            else
-            {
-                // Field to calculate found.
-                that.fieldToCalculate = fieldName;
-            }
         });
 
-        if (that.fieldToCalculate == undefined)
-        {
-            console.log('[ LOANSIMULATOR ] INITIALIZATION ERROR: Too much fields provided.');
-            return null;
-        }
-
-        switch(this.fieldToCalculate)
-        {
-            case 'monthlyFees':
-                break;
-
-            case 'borrowedCapital':
-                break;
-
-            case 'loanDuration':
-                break;
-
-            default:
-               console.log('[ LOANSIMULATOR ] INITIALIZATION ERROR: Fields mismacth.');
-               return null;
-        }
-
-        // Initialize DOM element values.
-        that.calculate();
+        // Calculate results for default values.
+        instance.calculate();
     }
 
 
@@ -299,11 +309,7 @@
         // Manage inalid value errors.
         inputError: function(error)
         {
-            // TODO
-
-            // Build error object and call hook.
-            var result = null;
-            this.settings.onError(result);
+            this.settings.onError(error);
         },
 
 
