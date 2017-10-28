@@ -129,7 +129,7 @@ var defaults = {
 
     // Hooks
     onUpdate: function(data) {},
-    onError: function() {}
+    onError: function(errorInfo) {}
 };
 ```
 
@@ -259,9 +259,16 @@ Le choix du calcul à effectué est en fait déterminé par les champs texte qui
 Le plugin n'affiche aucun message d'erreur à l'utilisateur. Il corrige lui-même les saisies de valeur invalides lorsque le champs perd le focus. Cepenedant, afin de signaler à l'utilisateur qu'une valeur qui est en train d'être saisie n'est pas correcte, SIMULIMMO fournit deux moyens :
 
 - l'application d'une classe CSS sur le champs texte en erreur (cf. paramètre de configuration `invalidValueCss`) pour une mise en garde visuelle.
-- le déclenchement du hook `onError()` permettant tout autre traitement en conséquence.
+- le déclenchement du hook `onError()` permettant tout autre traitement en conséquence. Ce dernier reçoit en argument un objet `errorInfo` contenant le détail de l'erreur qui s'est produite&nbsp;:
+```javascript
+var errorInfo = {
+    error: string, // 'NaN' | 'Too low' | 'Too high'
+    value: xxx, // La valeur saisie qui est invalide.
+    target: element // Le champs texte qui est en erreur.
+}
+```
 
-De plus, le plugin n'effectue aucun calcul tant qu'un champs en cours de saisie contient une valeur invalie ; le hook `onUpdate()` n'est donc pas déclenché.
+Par ailleurs, le plugin n'effectue aucun calcul tant qu'un champs en cours de saisie contient une valeur invalie ; le hook `onUpdate()` n'est donc pas déclenché.
 
 
 ## Fiabilité des résultats
